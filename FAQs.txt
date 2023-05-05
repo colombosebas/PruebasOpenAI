@@ -1,0 +1,46 @@
+[
+    {
+        "question": "¿Cuándo debo iniciar el trámite de nuevo permiso de carnicería?",
+        "answer": "Antes del comienzo de la actividad destinada a la venta a personas de carne de las siguientes especies: bovina, ovina, porcina, caprina, de ave, de conejo y animales de caza menor, sus menudencias, subproductos y productos cárnicos aptos para consumo humano, debe solicitarse la habilitación ante el INAC. La exigencia de dicha habilitación es aplicable a todos los locales destinados a la venta de carne ubicados dentro del territorio nacional."
+    },
+    {
+        "question": "¿Cuándo debo iniciar el trámite de regularización de carnicería?",
+        "answer": "Si su local se encuentra dentro de alguna de las siguientes situaciones debe iniciar el proceso de regularización de datos:* Carnicería no regularizada,* Carnicería dada de baja,* Carnicería con otro titular. Para acceder a este trámite la empresa debe contar con documentación de la intendencia del departamento acreditando que ese local, fue habilitado por la intendencia antes del 21 de enero de 2021 a su nombre."
+    },
+    {
+        "question": "¿Es posible regularizar mi carnicería a través del decreto 279/022?",
+        "answer": "Este decreto aplica en situaciones excepcionales en las cuales no pueden regularizarse los locales de carnicerías a través el método de regularización común. Una vez aprobado legalmente, se coordinará inspección, solicitándose los mismos requisitos del nuevo permiso desde el punto de vista de infraestructura (planos, memoria descriptiva, viabilidad urbanística, formularios de solicitud de aprobación de proyecto). El plazo de la habilitación será hasta la fecha 21 de enero de 2026."
+    },
+    {
+        "question": "Mi local cuenta con habilitación vigente a nombre de otro titular",
+        "answer": "Para transferir esa habilitación vigente y poder aprovechar el plazo de habilitación restante, la forma es a través de la realización de un contrato entre la empresa saliente y entrante llamado promesa de enajenación de establecimiento comercial. Posteriormente, se debe acreditar su otorgamiento e inscripción mediante certificado notarial ante INAC."
+    },
+    {
+        "question": "Mi local está habilitado y quiero anexar la venta de otros productos",
+        "answer": "Si el local se encuentra regularizado y con habilitación vigente es posible incorporar la venta de ciertos productos, ejemplo: milanesas, pollo arrollado. En estos casos debe iniciarse el proceso de sector anexo a habilitar. Asimismo, es posible incorporar la venta de productos no cárnicos que surgen de la nómina aprobada por Resolución 21/040 de INAC, en estos casos debe promoverse el proceso de sector anexo a comunicar. "
+    },
+    {
+        "question": "¿Mi empresa se encuentra suspendida pero la carnicería habilitada?",
+        "answer": "En el Registro Único Nacional de Empresas Cárnicas (RUNEC) se inscriben a todas las empresas vinculadas al sector cárnico y las diversas actividades que las mismas realizan, entre ellas: VENTA AL PÚBLICO (CARNICERIA). La empresa independientemente de sus actividades concretas puede ser objeto de suspensión. Las causas posibles son: vencimiento de los certificados fiscales (BPS y DGI), no constitución de domicilio electrónico, falta de presentación garantía."
+    },
+    {
+        "question": "¿Cuándo corresponde iniciar los trámites de nuevo permiso de carnicería?",
+        "answer": "Antes del comienzo de la actividad destinada a la venta a personas de carne de las siguientes especies: bovina, ovina, porcina, caprina, de ave, de conejo y animales de caza menor, sus menudencias, subproductos y productos cárnicos aptos para consumo humano, debe solicitarse la habilitación ante el INAC. La exigencia de dicha habilitación es aplicable a todos los locales destinados a la venta de carne ubicados dentro del territorio nacional."
+    },
+    {
+        "question": "¿Cuándo corresponde iniciar el trámite de regularización de datos de carnicerías?",
+        "answer": "Si su local se encuentra dentro de alguna de las siguientes situaciones debe iniciar el proceso de regularización de datos: * Carnicería no regularizada, * Carnicería dada de baja, * Carnicería con otro titular. Para acceder a este trámite la empresa debe contar con documentación de la intendencia del departamento acreditando que ese local, fue habilitado por la intendencia antes del 21 de enero de 2021 a su nombre."
+    },
+    {
+        "question": "¿Cómo saber si puedo regularizar mi carnicería a través del decreto 279/022?",
+        "answer": "Este decreto aplica en situaciones excepcionales en las cuales no pueden regularizarse los locales de carnicerías a través el método de regularización común. Una vez aprobado legalmente, se coordinará inspección, solicitándose los mismos requisitos del nuevo permiso desde el punto de vista de infraestructura (planos, memoria descriptiva, viabilidad urbanística, formularios de solicitud de aprobación de proyecto). El plazo de la habilitación será hasta la fecha 21 de enero de 2026."
+    },
+    {
+        "question": "Quiero empezar a trabajar en un local que cuenta con habilitación vigente a nombre de otro titular",
+        "answer": "Para transferir esa habilitación vigente y poder aprovechar el plazo de habilitación restante, la forma es a través de la realización de un contrato entre la empresa saliente y entrante llamado promesa de enajenación de establecimiento comercial. Posteriormente, se debe acreditar su otorgamiento e inscripción mediante certificado notarial ante INAC."
+    },
+    {
+        "question": "Ya cuento con un local habilitado y quiero anexar la venta de otros productos",
+        "answer": "Si el local se encuentra regularizado y con habilitación vigente es posible incorporar la venta de ciertos productos, ejemplo: milanesas, pollo arrollado. En estos casos debe iniciarse el proceso de sector anexo a habilitar. Asimismo, es posible incorporar la venta de productos no cárnicos que surgen de la nómina aprobada por Resolución 21/040 de INAC, en estos casos debe promoverse el proceso de sector anexo a comunicar. "
+    }
+]
