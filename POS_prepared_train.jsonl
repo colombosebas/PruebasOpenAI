@@ -1,0 +1,344 @@
+{"prompt":"¿Cuánto tiempo dura el ciclo de vida de una mariposa? ->","completion":" 999"}
+{"prompt":"Se me terminó el papel para los tickets ->","completion":" 003"}
+{"prompt":"¿Puedes informarme de mi deuda? ->","completion":" 010"}
+{"prompt":"¿A qué hora abren y cierran? ->","completion":" 001"}
+{"prompt":"¿Cómo se llama la reina de Inglaterra? ->","completion":" 999"}
+{"prompt":"Cuánto debo? ->","completion":" 010"}
+{"prompt":"Mi POS indica 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"En la pantalla de la terminal dice proceso de parametrización forzado ->","completion":" 006"}
+{"prompt":"La terminal está indicando 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"Necesito apagar el POS ->","completion":" 007"}
+{"prompt":"¿Cuántos años tiene la Gran Pirámide de Giza? ->","completion":" 999"}
+{"prompt":"El POS muestra un estado de bloqueado ->","completion":" 002"}
+{"prompt":"¿Cómo puedo contratar un POS? ->","completion":" 008"}
+{"prompt":"¿Dónde está el baño? ->","completion":" 999"}
+{"prompt":"¿Dónde se sitúa su local? ->","completion":" 001"}
+{"prompt":"La terminal parece no imprimir ->","completion":" 005"}
+{"prompt":"Cuál es mi deuda? ->","completion":" 010"}
+{"prompt":"Dónde comrpo rollo? ->","completion":" 003"}
+{"prompt":"¿Hola, me puedes ayudar? ->","completion":" 000"}
+{"prompt":"¿Cuál es la diferencia entre un cocodrilo y un caimán? ->","completion":" 999"}
+{"prompt":"¿Tengo deudas por pagar? ->","completion":" 010"}
+{"prompt":"Quiero suscribirme a un POS ->","completion":" 008"}
+{"prompt":"Cómo contrato un POS? ->","completion":" 008"}
+{"prompt":"Me muestra un error de POS bloqueado ->","completion":" 002"}
+{"prompt":"Tengo un problema con la impresión en el POS ->","completion":" 005"}
+{"prompt":"Contratar POS ->","completion":" 008"}
+{"prompt":"El POS no está generando impresiones ->","completion":" 005"}
+{"prompt":"¿Cómo se llama el ave más grande del mundo? ->","completion":" 999"}
+{"prompt":"No he recibido el POS todavía ->","completion":" 009"}
+{"prompt":"Aún no tengo el POS ->","completion":" 009"}
+{"prompt":"¿A dónde envío el POS para devolverlo? ->","completion":" 004"}
+{"prompt":"¿Tengo deudas? ->","completion":" 010"}
+{"prompt":"¿Qué ingredientes lleva la lasaña? ->","completion":" 999"}
+{"prompt":"¿Cómo obtengo más rollo para la impresora? ->","completion":" 003"}
+{"prompt":"¿Cuántos planetas hay en el sistema solar? ->","completion":" 999"}
+{"prompt":"¿Dónde puedo comprar más rollo? ->","completion":" 003"}
+{"prompt":"¿Cuánto cuesta su servicio? ->","completion":" 008"}
+{"prompt":"¿Cómo se llama el libro más reciente de J.K. Rowling? ->","completion":" 999"}
+{"prompt":"Alternativas de pago ->","completion":" 011"}
+{"prompt":"¿Dónde se encuentra la Capilla Sixtina? ->","completion":" 999"}
+{"prompt":"¿Cuánto tengo que pagar? ->","completion":" 010"}
+{"prompt":"La impresora del POS no está funcionando ->","completion":" 005"}
+{"prompt":"¿Cómo adquiero un nuevo rollo? ->","completion":" 003"}
+{"prompt":"Cómo consigo rollo nuevo? ->","completion":" 003"}
+{"prompt":"¿Dónde se localiza GEOCOM? ->","completion":" 001"}
+{"prompt":"¿Qué pasos debo seguir para devolver el POS? ->","completion":" 004"}
+{"prompt":"¿Cuánto debo en total? ->","completion":" 010"}
+{"prompt":"Necesito papel para imprimir ->","completion":" 003"}
+{"prompt":"¿Puedes decirme cuánto debo? ->","completion":" 010"}
+{"prompt":"¿Cómo se llama el faraón más famoso de Egipto? ->","completion":" 999"}
+{"prompt":"¿Hola, puedes ayudarme? ->","completion":" 000"}
+{"prompt":"¿Cuáles son los requisitos para contratar un POS? ->","completion":" 008"}
+{"prompt":"Cuanto cuesta el servicio? ->","completion":" 008"}
+{"prompt":"Buenos días ->","completion":" 000"}
+{"prompt":"¿Hola, hay alguien? ->","completion":" 000"}
+{"prompt":"¿Quién escribió 'Don Quijote de la Mancha'? ->","completion":" 999"}
+{"prompt":"¿Cuál es mi saldo deudor? ->","completion":" 010"}
+{"prompt":"Tengo un problema, mi POS dice que está bloqueado ->","completion":" 002"}
+{"prompt":"¿Cuál es el procedimiento para reiniciar el POS? ->","completion":" 007"}
+{"prompt":"¿Dónde adquiero papel para la impresora? ->","completion":" 003"}
+{"prompt":"¿Cuál es tu película favorita? ->","completion":" 999"}
+{"prompt":"Pagos atrasados ->","completion":" 010"}
+{"prompt":"Me quedé sin rollo ->","completion":" 003"}
+{"prompt":"No tengo más papel para imprimir los tickets ->","completion":" 003"}
+{"prompt":"¿Quién es el autor de la Odisea? ->","completion":" 999"}
+{"prompt":"Cuál es su telefono? ->","completion":" 001"}
+{"prompt":"¿Cómo se llama el edificio más alto del mundo? ->","completion":" 999"}
+{"prompt":"¿Cómo cuidar una planta de aloe vera? ->","completion":" 999"}
+{"prompt":"¿Cómo hago para reiniciar o apagar el POS? ->","completion":" 007"}
+{"prompt":"¿Me podrían dar su número de contacto? ->","completion":" 001"}
+{"prompt":"¿Mi POS está listo para enviarse? ->","completion":" 009"}
+{"prompt":"¿Cuántos jugadores hay en un equipo de fútbol? ->","completion":" 999"}
+{"prompt":"¿Cuál es el proceso para devolver el POS? ->","completion":" 004"}
+{"prompt":"¿Dónde nació Picasso? ->","completion":" 999"}
+{"prompt":"¿Dónde se encuentra el Palacio de Versalles? ->","completion":" 999"}
+{"prompt":"¿Qué monto debo? ->","completion":" 010"}
+{"prompt":"Dónde están? ->","completion":" 001"}
+{"prompt":"¿Dónde se encuentra su local? ->","completion":" 001"}
+{"prompt":"¿Qué cantidad debo? ->","completion":" 010"}
+{"prompt":"Desearía cancelar el servicio ->","completion":" 004"}
+{"prompt":"El papel de la impresora se agotó ->","completion":" 003"}
+{"prompt":"¿Quién pintó la Mona Lisa? ->","completion":" 999"}
+{"prompt":"Mi terminal de punto de venta está bloqueada ->","completion":" 002"}
+{"prompt":"¿Cuál es el procedimiento para finalizar el contrato? ->","completion":" 004"}
+{"prompt":"Dónde esta su oficina? ->","completion":" 001"}
+{"prompt":"Hola, quiero hacer una consulta ->","completion":" 000"}
+{"prompt":"Mi POS está dando un error de bloqueo ->","completion":" 002"}
+{"prompt":"La terminal de punto de venta no está imprimiendo ->","completion":" 005"}
+{"prompt":"¿Cuánto es el costo de un POS? ->","completion":" 008"}
+{"prompt":"¿Dónde está situada su empresa? ->","completion":" 001"}
+{"prompt":"Me quedé sin papel en el POS ->","completion":" 003"}
+{"prompt":"¿Cuál es la capital de Australia? ->","completion":" 999"}
+{"prompt":"Cómo apago el POS? ->","completion":" 007"}
+{"prompt":"¿Cuánto vale un POS? ->","completion":" 008"}
+{"prompt":"¿Cómo se llama la montaña más alta de América? ->","completion":" 999"}
+{"prompt":"Cuándo me entregan el POS? ->","completion":" 009"}
+{"prompt":"¿Cómo se llama el dinosaurio volador? ->","completion":" 999"}
+{"prompt":"Maneras de pagar ->","completion":" 011"}
+{"prompt":"¿Hola, estás ahí? ->","completion":" 000"}
+{"prompt":"¿En qué horario los puedo encontrar? ->","completion":" 001"}
+{"prompt":"¿Cuánto se paga por el servicio? ->","completion":" 008"}
+{"prompt":"¿Cómo llego a la estación de tren? ->","completion":" 999"}
+{"prompt":"¿Dónde se encuentra Stonehenge? ->","completion":" 999"}
+{"prompt":"Aún no ha llegado mi POS ->","completion":" 009"}
+{"prompt":"¿Hola, estás disponible? ->","completion":" 000"}
+{"prompt":"¿Cómo se llama el mar más salado del mundo? ->","completion":" 999"}
+{"prompt":"Estoy experimentando problemas con la impresión ->","completion":" 005"}
+{"prompt":"¿Dónde se encuentra el monte Everest? ->","completion":" 999"}
+{"prompt":"Hola q tal ->","completion":" 000"}
+{"prompt":"Hola, busco asistencia ->","completion":" 000"}
+{"prompt":"Modos de pago ->","completion":" 011"}
+{"prompt":"La terminal indica que está bloqueada ->","completion":" 002"}
+{"prompt":"Mi POS aún no ha llegado ->","completion":" 009"}
+{"prompt":"¿Cuánto tiempo tardarán en enviarme el POS? ->","completion":" 009"}
+{"prompt":"La terminal de punto de venta muestra un bloqueo ->","completion":" 002"}
+{"prompt":"¿Cómo puedo hacer para devolver mi POS? ->","completion":" 004"}
+{"prompt":"¿Cómo se llama el volcán más activo del mundo? ->","completion":" 999"}
+{"prompt":"¿Cuáles son las alternativas de pago? ->","completion":" 011"}
+{"prompt":"¿Dónde puedo encontrarlos? ->","completion":" 001"}
+{"prompt":"Estoy esperando la llegada del POS ->","completion":" 009"}
+{"prompt":"¿Cuáles son los términos para contratar un POS? ->","completion":" 008"}
+{"prompt":"¿Cuál es el costo de un POS? ->","completion":" 008"}
+{"prompt":"Cómo me contacto con ustedes? ->","completion":" 001"}
+{"prompt":"¿Hola, alguien por aquí? ->","completion":" 000"}
+{"prompt":"Quiero contratar un POS ->","completion":" 008"}
+{"prompt":"¿Dónde se encuentra la Gran Muralla China? ->","completion":" 999"}
+{"prompt":"¿A dónde mando el POS de vuelta? ->","completion":" 004"}
+{"prompt":"Dar de baja el servicio ->","completion":" 004"}
+{"prompt":"¿Pueden darme detalles sobre su servicio de POS? ->","completion":" 008"}
+{"prompt":"¿Cómo se llama el animal más grande del mundo? ->","completion":" 999"}
+{"prompt":"¿Cómo doy por terminado el contrato? ->","completion":" 004"}
+{"prompt":"¿Dónde debo entregar el POS? ->","completion":" 004"}
+{"prompt":"No puedo imprimir desde mi POS ->","completion":" 005"}
+{"prompt":"¿Cómo se llama la galaxia en la que vivimos? ->","completion":" 999"}
+{"prompt":"Facturas sin pagar ->","completion":" 010"}
+{"prompt":"El POS presenta un mensaje de 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"¿Cómo se llama el estadio del Barcelona FC? ->","completion":" 999"}
+{"prompt":"¿Qué formas de pago tengo disponibles? ->","completion":" 011"}
+{"prompt":"¿Dónde se encuentra el Museo del Louvre? ->","completion":" 999"}
+{"prompt":"El POS muestra 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"¿Cómo se reinicia o se apaga el POS? ->","completion":" 007"}
+{"prompt":"Quisiera retornar el POS ->","completion":" 004"}
+{"prompt":"¿Qué modelos de POS ofrecen? ->","completion":" 008"}
+{"prompt":"Contratar servicio ->","completion":" 008"}
+{"prompt":"¿Cuántos gramos tiene una libra? ->","completion":" 999"}
+{"prompt":"Tengo deuda pendiente? ->","completion":" 010"}
+{"prompt":"¿Cómo puedo conseguir un rollo de repuesto? ->","completion":" 003"}
+{"prompt":"Apagado del POS ->","completion":" 007"}
+{"prompt":"¿Cómo puedo reiniciar mi POS? ->","completion":" 007"}
+{"prompt":"Se me acabo el rollo ->","completion":" 003"}
+{"prompt":"¿Cuántos idiomas se hablan en el mundo? ->","completion":" 999"}
+{"prompt":"En la terminal aparece un mensaje de 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"Quisiera poner fin al servicio ->","completion":" 004"}
+{"prompt":"¿Podrían explicarme cómo es su servicio de POS? ->","completion":" 008"}
+{"prompt":"¿Podrías decirme cuál es mi deuda? ->","completion":" 010"}
+{"prompt":"¿Dónde se encuentra el Parque Nacional de Yellowstone? ->","completion":" 999"}
+{"prompt":"El POS ya está listo? ->","completion":" 009"}
+{"prompt":"¿Cómo se efectúa el pago? ->","completion":" 011"}
+{"prompt":"¿Cuánto tiempo hasta que reciba el POS? ->","completion":" 009"}
+{"prompt":"¿Cómo puedo apagar el POS? ->","completion":" 007"}
+{"prompt":"¿Cómo está el tiempo hoy? ->","completion":" 999"}
+{"prompt":"Aún no me ha llegado el POS ->","completion":" 009"}
+{"prompt":"¿Dónde está su sede principal? ->","completion":" 001"}
+{"prompt":"El POS no está imprimiendo los recibos ->","completion":" 005"}
+{"prompt":"¿Cuál es la ciudad más poblada del mundo? ->","completion":" 999"}
+{"prompt":"¿Cuánto tiempo demora la entrega del POS? ->","completion":" 009"}
+{"prompt":"¿Cuántos tipos de POS tienen? ->","completion":" 008"}
+{"prompt":"¿El POS ya está en camino? ->","completion":" 009"}
+{"prompt":"Parece que mi POS está bloqueado ->","completion":" 002"}
+{"prompt":"Me gustaría dar por finalizado el contrato ->","completion":" 004"}
+{"prompt":"¿Cuánto dura el vuelo a la Luna? ->","completion":" 999"}
+{"prompt":"¿Quién es el autor de 'Cien años de soledad'? ->","completion":" 999"}
+{"prompt":"Hola, necesito ayuda ->","completion":" 000"}
+{"prompt":"¿Qué métodos de pago aceptan? ->","completion":" 011"}
+{"prompt":"¿Existe alguna deuda que tenga? ->","completion":" 010"}
+{"prompt":"En la pantalla del POS dice 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"La terminal no está imprimiendo los tickets ->","completion":" 005"}
+{"prompt":"¿Qué pasos debo seguir para reiniciar el POS? ->","completion":" 007"}
+{"prompt":"Saludos ->","completion":" 000"}
+{"prompt":"Necesito suscribirme a un POS ->","completion":" 008"}
+{"prompt":"Me gustaría regresar el POS ->","completion":" 004"}
+{"prompt":"Necesito más rollo para la impresora ->","completion":" 003"}
+{"prompt":"¿Qué animal es el más rápido? ->","completion":" 999"}
+{"prompt":"¿Cómo se llama el último álbum de Adele? ->","completion":" 999"}
+{"prompt":"Cómo reinicio el POS? ->","completion":" 007"}
+{"prompt":"¿Cómo se llama el aeropuerto de Madrid? ->","completion":" 999"}
+{"prompt":"¿Dónde se encuentra el desierto más seco del mundo? ->","completion":" 999"}
+{"prompt":"¿Cuál es el punto más alto del mundo? ->","completion":" 999"}
+{"prompt":"Cuáles son las condiciones de contratación de POS? ->","completion":" 008"}
+{"prompt":"¿Dónde se encuentra el Canal de Panamá? ->","completion":" 999"}
+{"prompt":"Se me terminó el rollo de la impresora ->","completion":" 003"}
+{"prompt":"Facturas pendientes de abono ->","completion":" 010"}
+{"prompt":"Mi POS muestra un 'proceso de parametrización forzado' ->","completion":" 006"}
+{"prompt":"Cómo es el servicio de POS que brindan? ->","completion":" 008"}
+{"prompt":"La terminal de punto de venta no está generando impresiones ->","completion":" 005"}
+{"prompt":"Buenas tardes ->","completion":" 000"}
+{"prompt":"¿Dónde se consigue el rollo para el POS? ->","completion":" 003"}
+{"prompt":"Mi terminal está bloqueada ->","completion":" 002"}
+{"prompt":"¿Cómo se llama el río más largo del mundo? ->","completion":" 999"}
+{"prompt":"Necesito rescindir el contrato ->","completion":" 004"}
+{"prompt":"Necesito un nuevo rollo para la impresora ->","completion":" 003"}
+{"prompt":"La función de impresión no funciona en mi POS ->","completion":" 005"}
+{"prompt":"¿Cómo se hace el pago? ->","completion":" 011"}
+{"prompt":"¿Cómo preparo un cóctel margarita? ->","completion":" 999"}
+{"prompt":"Quiero devolver el POS ->","completion":" 004"}
+{"prompt":"El POS no ha llegado aún ->","completion":" 009"}
+{"prompt":"Tengo un error en mi POS, dice que está bloqueado ->","completion":" 002"}
+{"prompt":"Que horario tienen? ->","completion":" 001"}
+{"prompt":"¿Cuál es el número al que puedo llamar? ->","completion":" 001"}
+{"prompt":"La impresora de la terminal parece estar rota ->","completion":" 005"}
+{"prompt":"¿Cómo gestiono la devolución del POS? ->","completion":" 004"}
+{"prompt":"¿Cómo se llama el instrumento que usan los doctores para escuchar el corazón? ->","completion":" 999"}
+{"prompt":"Estoy interesado en contratar un POS ->","completion":" 008"}
+{"prompt":"¿Cómo puedo hacer un reinicio en el POS? ->","completion":" 007"}
+{"prompt":"El sistema POS indica que está bloqueado ->","completion":" 002"}
+{"prompt":"¿Cómo funciona su servicio de POS? ->","completion":" 008"}
+{"prompt":"¿Cuándo estará aquí mi POS? ->","completion":" 009"}
+{"prompt":"¿Dónde se encuentra Machu Picchu? ->","completion":" 999"}
+{"prompt":"¿Qué monto tengo que pagar? ->","completion":" 010"}
+{"prompt":"¿Cómo se llama el océano más profundo? ->","completion":" 999"}
+{"prompt":"¿Cuántas calorías tiene una manzana? ->","completion":" 999"}
+{"prompt":"¿Cuánto tiempo dura el vuelo de Madrid a Nueva York? ->","completion":" 999"}
+{"prompt":"Quiero descontinuar el servicio ->","completion":" 004"}
+{"prompt":"Estoy teniendo problemas con la impresora de la terminal ->","completion":" 005"}
+{"prompt":"¿Dónde se encuentra el Vaticano? ->","completion":" 999"}
+{"prompt":"¿Quién inventó la penicilina? ->","completion":" 999"}
+{"prompt":"¿Cómo puedo suscribirme a un POS? ->","completion":" 008"}
+{"prompt":"Requiero más papel para tickets ->","completion":" 003"}
+{"prompt":"¿Cuándo se celebran los Juegos Olímpicos? ->","completion":" 999"}
+{"prompt":"¿Cuál es el precio de su servicio? ->","completion":" 008"}
+{"prompt":"El POS aún no ha llegado ->","completion":" 009"}
+{"prompt":"¿Qué día es hoy? ->","completion":" 999"}
+{"prompt":"¿Qué métodos de pago están disponibles? ->","completion":" 011"}
+{"prompt":"Tengo algún saldo pendiente? ->","completion":" 010"}
+{"prompt":"¿Me puede dar la receta de la paella? ->","completion":" 999"}
+{"prompt":"¿Cómo se apaga el POS? ->","completion":" 007"}
+{"prompt":"Cuánto demoran en enviarme el POS? ->","completion":" 009"}
+{"prompt":"¿Cómo se llama el protagonista de Harry Potter? ->","completion":" 999"}
+{"prompt":"¿Cuándo me llega el POS? ->","completion":" 009"}
+{"prompt":"¿Tengo algún saldo adeudado? ->","completion":" 010"}
+{"prompt":"La terminal no imprime ->","completion":" 005"}
+{"prompt":"¿Dónde puedo encontrar la oficina de GEOCOM? ->","completion":" 001"}
+{"prompt":"Hola, buenos días ->","completion":" 000"}
+{"prompt":"¿Cómo puedo hacer el pago? ->","completion":" 011"}
+{"prompt":"¿Cómo puedo apagar mi POS? ->","completion":" 007"}
+{"prompt":"¿Cómo se llama el árbol más alto del mundo? ->","completion":" 999"}
+{"prompt":"Facturas vencidas ->","completion":" 010"}
+{"prompt":"¿Qué necesito hacer para cancelar el contrato? ->","completion":" 004"}
+{"prompt":"Reinicio del POS ->","completion":" 007"}
+{"prompt":"¿Cuántos huesos tiene el cuerpo humano? ->","completion":" 999"}
+{"prompt":"¿Cuánto dura un día en Marte? ->","completion":" 999"}
+{"prompt":"Facturas atrasadas ->","completion":" 010"}
+{"prompt":"¿Qué tipo de música te gusta? ->","completion":" 999"}
+{"prompt":"Quiero anular el contrato ->","completion":" 004"}
+{"prompt":"¿Cómo se llama el primer hombre que llegó a la luna? ->","completion":" 999"}
+{"prompt":"Facturas pendientes de pago ->","completion":" 010"}
+{"prompt":"¿Dónde se encuentra la Ciudad Prohibida? ->","completion":" 999"}
+{"prompt":"Cómo puedo pagar? ->","completion":" 011"}
+{"prompt":"¿Cuál es el procedimiento para contratar un POS? ->","completion":" 008"}
+{"prompt":"Opciones de pago ->","completion":" 011"}
+{"prompt":"En mi terminal aparece 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"Mi POS no imprime correctamente ->","completion":" 005"}
+{"prompt":"Cuánto sale un POS? ->","completion":" 008"}
+{"prompt":"¿Cuánto tiempo se tardan en enviar el POS? ->","completion":" 009"}
+{"prompt":"Estoy considerando contratar un POS ->","completion":" 008"}
+{"prompt":"Necesito devolver el POS ->","completion":" 004"}
+{"prompt":"¿Dónde puedo regresar el POS? ->","completion":" 004"}
+{"prompt":"¿Qué se requiere para contratar un POS? ->","completion":" 008"}
+{"prompt":"¿Dónde se encuentra el Partenón? ->","completion":" 999"}
+{"prompt":"Deuda actual ->","completion":" 010"}
+{"prompt":"El POS no imprime ->","completion":" 005"}
+{"prompt":"¿Cuándo es el próximo partido del Real Madrid? ->","completion":" 999"}
+{"prompt":"Quiero desactivar el servicio ->","completion":" 004"}
+{"prompt":"¿Cómo realizo el pago? ->","completion":" 011"}
+{"prompt":"El POS no produce impresiones ->","completion":" 005"}
+{"prompt":"¿Cuáles son las opciones de pago? ->","completion":" 011"}
+{"prompt":"¿Dónde está su localización? ->","completion":" 001"}
+{"prompt":"¿Dónde se encuentra la Torre de Pisa? ->","completion":" 999"}
+{"prompt":"El POS muestra un mensaje de bloqueo ->","completion":" 002"}
+{"prompt":"Se me acabó el papel de la impresora ->","completion":" 003"}
+{"prompt":"¿Cuándo recibiré mi POS? ->","completion":" 009"}
+{"prompt":"¿Cuál es el método para reiniciar o apagar el POS? ->","completion":" 007"}
+{"prompt":"Mi POS está mostrando 'parametrización forzado' ->","completion":" 006"}
+{"prompt":"Buenas ->","completion":" 000"}
+{"prompt":"¿Cuál es su horario de atención? ->","completion":" 001"}
+{"prompt":"¿Cuál es la ubicación de GEOCOM? ->","completion":" 001"}
+{"prompt":"Apagar POS ->","completion":" 007"}
+{"prompt":"Mi POS se niega a imprimir ->","completion":" 005"}
+{"prompt":"¿Cuándo es el Día de San Valentín? ->","completion":" 999"}
+{"prompt":"¿Cuál es el monto que debo? ->","completion":" 010"}
+{"prompt":"¿Qué variedad de POS tienen? ->","completion":" 008"}
+{"prompt":"Se me agotó el papel de los recibos ->","completion":" 003"}
+{"prompt":"La terminal me dice que está bloqueada ->","completion":" 002"}
+{"prompt":"Todavía no me envía el POS ->","completion":" 009"}
+{"prompt":"¿Cuáles son los métodos de pago? ->","completion":" 011"}
+{"prompt":"¿Cuál es el océano más grande del mundo? ->","completion":" 999"}
+{"prompt":"¿Qué hago para apagar el POS? ->","completion":" 007"}
+{"prompt":"¿Dónde se encuentra su punto de atención? ->","completion":" 001"}
+{"prompt":"¿Cuál es tu color favorito? ->","completion":" 999"}
+{"prompt":"Quiero contratar su servicio ->","completion":" 008"}
+{"prompt":"¿Cuál es el total de mi deuda? ->","completion":" 010"}
+{"prompt":"¿Está listo mi POS para enviar? ->","completion":" 009"}
+{"prompt":"¿Cuándo se celebra el Día de la Madre? ->","completion":" 999"}
+{"prompt":"Buen día ->","completion":" 000"}
+{"prompt":"Todavía estoy esperando mi POS ->","completion":" 009"}
+{"prompt":"¿Cuál es el país más pequeño del mundo? ->","completion":" 999"}
+{"prompt":"Cómo finalizo el contrato ->","completion":" 004"}
+{"prompt":"Quisiera suscribirme a su servicio ->","completion":" 008"}
+{"prompt":"¿Qué es la teoría de la relatividad? ->","completion":" 999"}
+{"prompt":"¿Cuál es el proceso para contratar un POS? ->","completion":" 008"}
+{"prompt":"Cómo reinicio o apago el POS? ->","completion":" 007"}
+{"prompt":"Cómo devuelvo mi POS ->","completion":" 004"}
+{"prompt":"¿Cuánto es el saldo que debo? ->","completion":" 010"}
+{"prompt":"Me gustaría contratar un POS ->","completion":" 008"}
+{"prompt":"Recibo un mensaje de error que dice 'POS bloqueado' ->","completion":" 002"}
+{"prompt":"¿Puedo tener el teléfono de contacto? ->","completion":" 001"}
+{"prompt":"¿Me puede proporcionar su número de teléfono? ->","completion":" 001"}
+{"prompt":"¿Cuándo se enviará mi POS? ->","completion":" 009"}
+{"prompt":"Cuánto cuesta un pos? ->","completion":" 008"}
+{"prompt":"¿Cuánto dura un día en Júpiter? ->","completion":" 999"}
+{"prompt":"A que dirección tengo que llevar el pos? ->","completion":" 001"}
+{"prompt":"¿Dónde se encuentra el Taj Mahal? ->","completion":" 999"}
+{"prompt":"¿Cuánto me costará un POS? ->","completion":" 008"}
+{"prompt":"Todavía no he recibido mi POS ->","completion":" 009"}
+{"prompt":"¿Cuánto es mi deuda? ->","completion":" 010"}
+{"prompt":"La pantalla del POS muestra 'proceso de parametrización forzado' ->","completion":" 006"}
+{"prompt":"¿Dónde se inventó la pizza? ->","completion":" 999"}
+{"prompt":"La impresora de la terminal no funciona ->","completion":" 005"}
+{"prompt":"Mi POS no funciona, dice que está bloqueado ->","completion":" 002"}
+{"prompt":"Mi terminal no produce impresiones ->","completion":" 005"}
+{"prompt":"Tengo problemas para imprimir ->","completion":" 005"}
+{"prompt":"Hola, tengo una pregunta ->","completion":" 000"}
+{"prompt":"¿Qué formas de pago se aceptan? ->","completion":" 011"}
+{"prompt":"Estoy teniendo problemas con mi POS, está bloqueado ->","completion":" 002"}
+{"prompt":"¿Cuál es el saldo que debo? ->","completion":" 010"}
+{"prompt":"Hola, tengo un problema ->","completion":" 000"}
+{"prompt":"La terminal está mostrando 'proceso de parametrización forzado' ->","completion":" 006"}
+{"prompt":"¿Cuándo están abiertos? ->","completion":" 001"}
+{"prompt":"¿Cómo se llama el planeta más grande del sistema solar? ->","completion":" 999"}
+{"prompt":"¿Quién ganó el último Mundial de Fútbol? ->","completion":" 999"}
+{"prompt":"Deseo contratar su servicio de POS ->","completion":" 008"}
+{"prompt":"Facturas pendientes ->","completion":" 010"}
+{"prompt":"¿Cómo se llama el actual presidente de Estados Unidos? ->","completion":" 999"}
+{"prompt":"¿Cómo se llama tu mascota? ->","completion":" 999"}

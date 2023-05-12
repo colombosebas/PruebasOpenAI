@@ -2,6 +2,7 @@ import os
 import openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+#Prueba de conversación usando chatgpt
 messages=[]
 
 while True:
@@ -16,10 +17,8 @@ while True:
     messages.append({"role": completion.choices[0].message.role, "content": str(completion.choices[0].message.content)})
     print(str(completion.choices[0].message.content))
 
-# import os
-# import openai
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-#
+#prueba de transcripción de audio
+
 # audio_file= open("C:\Seba\PruebasOpenAI\Jaime2.mp3", "rb")
 # transcript = openai.Audio.transcribe("whisper-1", audio_file)
 # texto = str(transcript)
