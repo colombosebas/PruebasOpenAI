@@ -11,7 +11,7 @@ from langchain.agents import initialize_agent
 from langchain.agents import AgentType
 from langchain.tools import Tool
 
-os.environ['SERPAPI_API_KEY'] = 'cbef55ab87fe0a81be0f5611b82b23d390368031d6fdd14b836bd65238019aca'
+os.environ['SERPAPI_API_KEY'] = 'Poner clave'
 OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 print(OpenAI.api_key)
 

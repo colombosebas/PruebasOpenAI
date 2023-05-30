@@ -15,7 +15,7 @@ from langchain.document_loaders import TextLoader
 
 
 os.environ['SERPAPI_API_KEY'] = 'Poner clave'
-os.environ["APIFY_API_TOKEN"] = "apify_api_HOxDgs1QUsKG66zVswaYfKqz6e58cs4ETtrK"
+os.environ["APIFY_API_TOKEN"] = "Poner clave"
 OpenAIChat.api_key = os.getenv("OPENAI_API_KEY")
 apify = ApifyWrapper()
 print(OpenAIChat.api_key)
