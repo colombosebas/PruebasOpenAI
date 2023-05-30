@@ -44,7 +44,7 @@ def seteoRespuesta(texto):
   elif texto == "999":
     return 'La pregunta no corresponde'
 
-modelo = 'ada:ft-personal-2023-05-09-14-28-18'
+modelo = 'davinci:ft-geocom-uruguay:poscolombo-2023-05-25-16-10-54'
 while True:
     Pregunta = input('Ingresa tu pregunta (escribe exit para salir): ')
     if Pregunta == 'exit':
@@ -53,17 +53,11 @@ while True:
       model=modelo,
       prompt=Pregunta + "->",
       max_tokens=2,
-      temperature=0.1,
+      temperature=0.0,
       top_p=0.1,
       n=1,
       logprobs=2
     )
     numero = str(completion['choices'][0]['text']).strip()
     print(f'{numero} {seteoRespuesta(numero)}')
-    token_completions = completion['choices'][0]['logprobs']['token_logprobs']
-    token_probs = [10 ** p for p in token_completions]
-    max_prob = max(token_probs)
-    confianza = max_prob / sum(token_probs)
-    print(f'Confianza: {confianza}')
-    print('************************************')
     # print(completion)

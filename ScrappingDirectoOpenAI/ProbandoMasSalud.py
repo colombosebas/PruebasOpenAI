@@ -13,14 +13,17 @@ import numpy as np
 from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
 import time
 
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 # Regex pattern to match a URL
 HTTP_URL_PATTERN = r'^http[s]{0,1}://.+$'
 
 # Define root domain to crawl
-# domain = "www.massalud.com.uy"
-# full_url = "https://www.massalud.com.uy/"
-domain = 'www.maldonado.gub.uy'
-full_url = 'https://www.maldonado.gub.uy/'
+nombre = 'massalud'
+domain = "www.massalud.com.uy"
+full_url = "https://www.massalud.com.uy/"
+# domain = 'www.maldonado.gub.uy'
+# full_url = 'https://www.maldonado.gub.uy/'
 max_tokens = 500
 
 # Create a class to parse the HTML and get the hyperlinks
@@ -159,6 +162,7 @@ def remove_newlines(serie):
     return serie
 
 # Function to split the text into chunks of a maximum number of tokens
+"""
 def split_into_many(text, max_tokens=max_tokens):
     # Split the text into sentences
     sentences = text.split('. ')
@@ -195,6 +199,8 @@ def split_into_many(text, max_tokens=max_tokens):
         chunks.append(". ".join(chunk) + ".")
 
     return chunks
+"""
+
 
 def create_context(question, df, max_len=1800, size="ada"):
     """
@@ -226,15 +232,15 @@ def create_context(question, df, max_len=1800, size="ada"):
     # Return the context
     return "\n\n###\n\n".join(returns)
 
-def answer_question(
-    df,
+def answer_question(df,
     model="text-davinci-003",
     question="Am I allowed to publish model outputs to Twitter, without a human review?",
     max_len=1800,
     size="ada",
     debug=False,
-    max_tokens=150,
-    stop_sequence=None
+    max_tokens=300,
+    stop_sequence=None,
+    temperature=0
 ):
     """
     Answer a question based on the most similar context from the dataframe texts
@@ -252,26 +258,46 @@ def answer_question(
 
     try:
         # Create a completions using the questin and context
-        response = openai.Completion.create(
-            prompt=f"Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:",
-            temperature=0,
+        # response = openai.Completion.create(
+        #     prompt=f"Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:",
+        #     temperature=temperature,
+        #     max_tokens=max_tokens,
+        #     top_p=1,
+        #     frequency_penalty=0,
+        #     presence_penalty=0,
+        #     stop=stop_sequence,
+        #     model=model,
+        # )
+        # return response["choices"][0]["text"].strip()
+        # prompt = f"Responde la pregunta en base al contexto a continuación, y si la pregunta no puede ser respondida en base al contexto, di \"No lo sé\".\n\nContexto: {context}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        prompt = f"Quiero que actúes como un documento con el que estoy teniendo una conversación. Eres una IA que atiende un chatbot de una página web de una farmacia. Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto a continuación. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y nada más. Ten en cuenta el resto de la conversación. Niega responder cualquier pregunta que no esté relacionada con la información. Nunca rompas el personaje .\n\nContexto: {context}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        messages.append({"role": "user", "content": prompt})
+        # messages = {"mensaje": "Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: Las consecuencias físicas, psicológicas y sociales en su desarrollo saludable se dan en el corto, medio y largo plazo, dado que una dieta alta en grasas y azúcares predispone a otras enfermedades como diabetes, hipertensión arterial o hipercolesterolemia. La obesidad es, una enfermedad infradiagnosticada y estigmatizada, que reduce tanto la esperanza de vida como la calidad de vida de forma drástica. Consejos: · Realizar una alimentación equilibrada como impacto positivo para la salud. · Promover la educación nutricional en el medio escolar, familiar y comunitario. · Nunca prescindir del desayuno, al que debería dedicarse entre 15 y 20 minutos de tiempo. De esta manera, se evita o reduce la necesidad de consumir alimentos menos nutritivos a media mañana y se mejora el rendimiento físico e intelectual en la escuela o liceo. · Estimular la práctica de actividad física regular con énfasis en los escolares y liceales. · Involucrar a todos los miembros de la familia en las actividades relacionadas con la alimentación: hacer la compra, decidir el menú semanal, preparar y cocinar los alimentos. Nta. Adrianna Pita. MSc. Equipo Más salud Nutrición Referencias: (1). Ministerio de Desarrollo Social. Encuesta de Nutrición, Desarrollo Infantil y Salud. Informe de la Segunda ronda. Montevideo: Ministerio de Desarrollo Social; 2018. (2). Administración Nacional de Educación Pública. Evaluación del Programa de Alimentación Escolar y monitoreo del estado nutricional de los niños de escuelas públicas y privadas en Uruguay. Montevideo: ANEP; 20.\n\n###\n\nConsideraciones:",
+        #     "role": "user"}
+        response = openai.ChatCompletion.create(
+            temperature=temperature,
+            messages=messages,
             max_tokens=max_tokens,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0,
-            stop=stop_sequence,
-            model=model,
+            # top_p=1,
+            n=1,
+            # frequency_penalty=0,
+            # presence_penalty=0,
+            # stop=stop_sequence,
+            model=model
         )
-        return response["choices"][0]["text"].strip()
+        messages[-1] = {"role": "user", "content": question}
+        messages.append({"role": response.choices[0].message.role, "content": str(response.choices[0].message.content)})
+        return str(response.choices[0].message.content)
     except Exception as e:
         print(e)
         return ""
 """
 crawl(full_url)
 """
+
+"""
 # Create a list to store the text files
 texts=[]
-
 # Get all the text files in the text directory
 for file in os.listdir("text/" + domain + "/"):
 
@@ -287,13 +313,14 @@ df = pd.DataFrame(texts, columns = ['fname', 'text'])
 
 # Set the text column to be the raw text with the newlines removed
 df['text'] = df.fname + ". " + remove_newlines(df.text)
-df.to_csv('processed/scraped.csv')
+csv = f'processed/scraped{nombre}.csv'
+df.to_csv(csv)
 df.head()
 
 # Load the cl100k_base tokenizer which is designed to work with the ada-002 model
 tokenizer = tiktoken.get_encoding("cl100k_base")
 
-df = pd.read_csv('processed/scraped.csv', index_col=0)
+df = pd.read_csv(csv, index_col=0)
 df.columns = ['title', 'text']
 
 # Tokenize the text and save the number of tokens to a new column
@@ -324,15 +351,27 @@ df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 df.n_tokens.hist()
 
 df['embeddings'] = df.text.apply(lambda x: openai.Embedding.create(input=x, engine='text-embedding-ada-002')['data'][0]['embedding'])
-df.to_csv('processed/embeddings.csv')
+embeddings = f'processed/embeddings{nombre}.csv'
+df.to_csv(embeddings)
 df.head()
 
-df=pd.read_csv('processed/embeddings.csv', index_col=0)
+df=pd.read_csv(embeddings, index_col=0)
 df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
 df.head()
+pkl = f'processed/df{nombre}.pkl'
+df.to_pickle(pkl)
+"""
+pkl = f'processed/df{nombre}.pkl'
+df = pd.read_pickle(pkl)
+# modelo = "text-davinci-003"
+modelo = 'gpt-3.5-turbo-0301'
+messages = []
 while True:
     Pregunta = input('Ingresa tu pregunta: ')
     if Pregunta == 'Exit':
         break
-    print(answer_question(df, question=Pregunta, debug=False))
-# print(answer_question(df, question="Quien es el intendente de Maldonado?"))
+    respuesta = (answer_question(df, question=Pregunta, debug=False, temperature=1, model=modelo))
+    if respuesta.startswith("Hmm, no estoy seguro"):
+        print(f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?')
+    else:
+        print(respuesta)
