@@ -1,12 +1,14 @@
 import os
 import pandas as pd
 import openai
-from openai.embeddings_utils import distances_from_embeddings, cosine_similarity
+from openai.embeddings_utils import distances_from_embeddings
+from flask import Flask
+from flask import request
 
+app = Flask(__name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 nombre = 'massalud'
-domain = "www.massalud.com.uy"
-full_url = "https://www.massalud.com.uy/"
+# full_url = "https://www.massalud.com.uy/"
 
 def create_context(question, df, max_len=1800, size="ada"):
     """
@@ -41,10 +43,11 @@ def create_context(question, df, max_len=1800, size="ada"):
 
 def answer_question(df,
     model="text-davinci-003",
-    question="Am I allowed to publish model outputs to Twitter, without a human review?",
+    question="Hola, cómo estas?",
     max_len=1800,
     size="ada",
     debug=False,
+    messages = [],
     max_tokens=300,
     stop_sequence=None,
     temperature=0
@@ -74,26 +77,30 @@ def answer_question(df,
             n=1,
             # frequency_penalty=0,
             # presence_penalty=0,
-            # stop=stop_sequence,
+            stop=stop_sequence,
             model=model
         )
-        messages[-1] = {"role": "user", "content": question}
-        messages.append({"role": response.choices[0].message.role, "content": str(response.choices[0].message.content)})
         return str(response.choices[0].message.content)
     except Exception as e:
         print(e)
-        return ""
+        return "Excepcion"
+
+@app.route('/envioPregunta', methods=['POST'])
+def envioPregunta():
+    datosIn = request.get_json()
+    conversation = datosIn.get("conversación")
+    pregunta = datosIn.get("pregunta")
+    respuesta = (answer_question(df, question=pregunta, messages=conversation, debug=False, temperature=1, model=modelo))
+    if respuesta.startswith("Hmm, no estoy seguro"):
+        return f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?'
+    elif respuesta == 'Excepcion':
+        return f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?'
+    else:
+        return respuesta
+
 
 pkl = f'processed/df{nombre}.pkl'
 df = pd.read_pickle(pkl)
 modelo = 'gpt-3.5-turbo-0301'
 messages = []
-while True:
-    Pregunta = input('Ingresa tu pregunta: ')
-    if Pregunta == 'Exit':
-        break
-    respuesta = (answer_question(df, question=Pregunta, debug=False, temperature=1, model=modelo))
-    if respuesta.startswith("Hmm, no estoy seguro"):
-        print(f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?')
-    else:
-        print(respuesta)
+app.run()
