@@ -68,7 +68,7 @@ def answer_question(df,
         print("\n\n")
 
     try:
-        prompt = f"\n\nContexto: {context}\n\n---\n\n\"Preguntas anteriores\": {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        prompt = f"\n\nContexto: {context}\n\n---\n\nDiálogo: {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
             temperature=temperature,
@@ -88,17 +88,12 @@ def answer_question(df,
 
 @app.route('/envioPregunta', methods=['POST'])
 def envioPregunta():
-    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"página de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información. No se pueden hacer reservas a través de este chat, siempre sugiere ir a la página que aparecerá en el contexto. Si recomiendas un profesional, ten en cuenta que MásSalud cuenta con profesionales y se pueden hacer reservas con ellos."}]
+    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"página de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Diálogo\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información. No se pueden hacer reservas a través de este chat, siempre sugiere ir a la página que aparecerá en el contexto. Si recomiendas un profesional, ten en cuenta que MásSalud cuenta con profesionales y se pueden hacer reservas con ellos."}]
     preguntas = []
     datosIn = request.get_json()
     preguntasrespuestas = datosIn.get("conversación")
-    for item in preguntasrespuestas:
-        conversation.append(item)
-        if item["role"] == "user":
-            nuevoItem = {"Pregunta":item["content"]}
-            preguntas.append(nuevoItem)
     pregunta = datosIn.get("pregunta")
-    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntas, debug=False, temperature=1, model=modelo))
+    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         return f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?'
     elif respuesta == 'Excepcion':
