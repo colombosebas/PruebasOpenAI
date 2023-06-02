@@ -88,10 +88,16 @@ def answer_question(df,
 
 @app.route('/envioPregunta', methods=['POST'])
 def envioPregunta():
+    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Nunca incluyas la palabra \"contexto\" en tu respuesta.Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto que te pasaré, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información."}]
+    preguntas = []
     datosIn = request.get_json()
-    preguntas = datosIn.get("conversación")
+    preguntasrespuestas = datosIn.get("conversación")
+    for item in preguntasrespuestas:
+        conversation.append(item)
+        if item["role"] == "user":
+            nuevoItem = {"Pregunta":item["content"]}
+            preguntas.append(nuevoItem)
     pregunta = datosIn.get("pregunta")
-    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Nunca incluyas la palabra \"contexto\" en tu respuesta.Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Para responder también debes tener cuenta las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\". Niega responder cualquier pregunta que no esté relacionada con la información."}]
     respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntas, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         return f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?'
