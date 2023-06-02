@@ -257,6 +257,8 @@ def answer_question(df,
         print("\n\n")
 
     try:
+        print(f'Mensajes: {messages}')
+        print(f'Preguntas: {preguntas}')
         prompt = f"\n\nContexto: {context}\n\n---\n\n\"Preguntas anteriores\": {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
@@ -356,8 +358,9 @@ while True:
     if pregunta == 'Exit':
         break
     if len(messages) == 0:
-        messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Nunca incluyas la palabra \"contexto\" en tu respuesta.Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Para responder también debes tener cuenta las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\". Niega responder cualquier pregunta que no esté relacionada con la información."})
-    respuesta = (answer_question(df, question=pregunta, debug=False, temperature=1, model=modelo))
+        messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"página de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información. No se pueden hacer reservas a través de este chat, siempre sugiere ir a la página que aparecerá en el contexto. Si recomiendas un profesional, ten en cuenta que MásSalud cuenta con profesionales y se pueden hacer reservas con ellos."})
+    respuesta = (answer_question(df, question=pregunta, debug=False, temperature=0, model=modelo))
+    messages.append({"role": "assistant", "content": respuesta})
     if respuesta.startswith("Hmm, no estoy seguro"):
         print(f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?')
     elif respuesta == 'Excepcion':
