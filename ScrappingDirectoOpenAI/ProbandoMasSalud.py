@@ -257,23 +257,8 @@ def answer_question(df,
         print("\n\n")
 
     try:
-        # Create a completions using the questin and context
-        # response = openai.Completion.create(
-        #     prompt=f"Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:",
-        #     temperature=temperature,
-        #     max_tokens=max_tokens,
-        #     top_p=1,
-        #     frequency_penalty=0,
-        #     presence_penalty=0,
-        #     stop=stop_sequence,
-        #     model=model,
-        # )
-        # return response["choices"][0]["text"].strip()
-        # prompt = f"Responde la pregunta en base al contexto a continuación, y si la pregunta no puede ser respondida en base al contexto, di \"No lo sé\".\n\nContexto: {context}\n\n---\n\nPregunta: {question}\nRespuesta:"
-        prompt = f"Quiero que actúes como un documento con el que estoy teniendo una conversación. Eres una IA que atiende un chatbot de una página web de una farmacia. Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto a continuación. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y nada más. Ten en cuenta el resto de la conversación. Niega responder cualquier pregunta que no esté relacionada con la información. Nunca rompas el personaje .\n\nContexto: {context}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        prompt = f"\n\nContexto: {context}\n\n---\n\n\"Preguntas anteriores\": {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
         messages.append({"role": "user", "content": prompt})
-        # messages = {"mensaje": "Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: Las consecuencias físicas, psicológicas y sociales en su desarrollo saludable se dan en el corto, medio y largo plazo, dado que una dieta alta en grasas y azúcares predispone a otras enfermedades como diabetes, hipertensión arterial o hipercolesterolemia. La obesidad es, una enfermedad infradiagnosticada y estigmatizada, que reduce tanto la esperanza de vida como la calidad de vida de forma drástica. Consejos: · Realizar una alimentación equilibrada como impacto positivo para la salud. · Promover la educación nutricional en el medio escolar, familiar y comunitario. · Nunca prescindir del desayuno, al que debería dedicarse entre 15 y 20 minutos de tiempo. De esta manera, se evita o reduce la necesidad de consumir alimentos menos nutritivos a media mañana y se mejora el rendimiento físico e intelectual en la escuela o liceo. · Estimular la práctica de actividad física regular con énfasis en los escolares y liceales. · Involucrar a todos los miembros de la familia en las actividades relacionadas con la alimentación: hacer la compra, decidir el menú semanal, preparar y cocinar los alimentos. Nta. Adrianna Pita. MSc. Equipo Más salud Nutrición Referencias: (1). Ministerio de Desarrollo Social. Encuesta de Nutrición, Desarrollo Infantil y Salud. Informe de la Segunda ronda. Montevideo: Ministerio de Desarrollo Social; 2018. (2). Administración Nacional de Educación Pública. Evaluación del Programa de Alimentación Escolar y monitoreo del estado nutricional de los niños de escuelas públicas y privadas en Uruguay. Montevideo: ANEP; 20.\n\n###\n\nConsideraciones:",
-        #     "role": "user"}
         response = openai.ChatCompletion.create(
             temperature=temperature,
             messages=messages,
@@ -282,11 +267,10 @@ def answer_question(df,
             n=1,
             # frequency_penalty=0,
             # presence_penalty=0,
-            # stop=stop_sequence,
+            stop=stop_sequence,
             model=model
         )
         messages[-1] = {"role": "user", "content": question}
-        messages.append({"role": response.choices[0].message.role, "content": str(response.choices[0].message.content)})
         return str(response.choices[0].message.content)
     except Exception as e:
         print(e)
@@ -366,12 +350,18 @@ df = pd.read_pickle(pkl)
 # modelo = "text-davinci-003"
 modelo = 'gpt-3.5-turbo-0301'
 messages = []
+preguntas = []
 while True:
-    Pregunta = input('Ingresa tu pregunta: ')
-    if Pregunta == 'Exit':
+    pregunta = input('Ingresa tu pregunta: ')
+    if pregunta == 'Exit':
         break
-    respuesta = (answer_question(df, question=Pregunta, debug=False, temperature=1, model=modelo))
+    if len(messages) == 0:
+        messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Nunca incluyas la palabra \"contexto\" en tu respuesta.Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Para responder también debes tener cuenta las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\". Niega responder cualquier pregunta que no esté relacionada con la información."})
+    respuesta = (answer_question(df, question=pregunta, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         print(f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?')
+    elif respuesta == 'Excepcion':
+        print(f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?')
     else:
-        print(respuesta)
+        preguntas.append({"Pregunta":pregunta})
+        print(f'Respuesta: {respuesta}')

@@ -48,6 +48,7 @@ def answer_question(df,
     size="ada",
     debug=False,
     messages = [],
+    preguntas = [],
     max_tokens=300,
     stop_sequence=None,
     temperature=0
@@ -67,7 +68,7 @@ def answer_question(df,
         print("\n\n")
 
     try:
-        prompt = f"Quiero que actúes como un documento con el que estoy teniendo una conversación. Eres una IA que atiende un chatbot de una página web de una farmacia. Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto a continuación. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y nada más. Ten en cuenta el resto de la conversación. Niega responder cualquier pregunta que no esté relacionada con la información. Nunca rompas el personaje .\n\nContexto: {context}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        prompt = f"\n\nContexto: {context}\n\n---\n\n\"Preguntas anteriores\": {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
             temperature=temperature,
@@ -88,9 +89,10 @@ def answer_question(df,
 @app.route('/envioPregunta', methods=['POST'])
 def envioPregunta():
     datosIn = request.get_json()
-    conversation = datosIn.get("conversación")
+    preguntas = datosIn.get("conversación")
     pregunta = datosIn.get("pregunta")
-    respuesta = (answer_question(df, question=pregunta, messages=conversation, debug=False, temperature=1, model=modelo))
+    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Nunca incluyas la palabra \"contexto\" en tu respuesta.Tu nombre es \"Asistente virtual de MasSalud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Para responder también debes tener cuenta las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Preguntas anteriores\". Niega responder cualquier pregunta que no esté relacionada con la información."}]
+    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntas, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         return f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?'
     elif respuesta == 'Excepcion':
