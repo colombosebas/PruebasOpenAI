@@ -68,6 +68,7 @@ def answer_question(df,
         print("\n\n")
 
     try:
+        print(f'Preguntas y respuestas recibidas: {preguntas}')
         prompt = f"\n\nContexto: {context}\n\n---\n\nDiálogo: {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
@@ -88,7 +89,7 @@ def answer_question(df,
 
 @app.route('/envioPregunta', methods=['POST'])
 def envioPregunta():
-    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Nunca preguntes si desean reservar, solo ofrece información. Niega responder cualquier pregunta que no esté relacionada con la información."}]
+    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información."}]
     preguntas = []
     datosIn = request.get_json()
     preguntasrespuestas = datosIn.get("conversación")
