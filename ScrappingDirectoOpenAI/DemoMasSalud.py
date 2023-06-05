@@ -93,6 +93,8 @@ def envioPregunta():
     datosIn = request.get_json()
     preguntasrespuestas = datosIn.get("conversación")
     pregunta = datosIn.get("pregunta")
+    if pregunta.lower() in ["sí", "sí.", "si", "si."]:
+        pregunta = pregunta + ', por favor.'
     respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         return f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?'
