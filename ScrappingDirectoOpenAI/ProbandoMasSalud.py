@@ -25,7 +25,7 @@ full_url = "https://www.massalud.com.uy/"
 # domain = 'www.maldonado.gub.uy'
 # full_url = 'https://www.maldonado.gub.uy/'
 max_tokens = 500
-
+"""
 # Create a class to parse the HTML and get the hyperlinks
 class HyperlinkParser(HTMLParser):
     def __init__(self):
@@ -162,7 +162,7 @@ def remove_newlines(serie):
     return serie
 
 # Function to split the text into chunks of a maximum number of tokens
-"""
+
 def split_into_many(text, max_tokens=max_tokens):
     # Split the text into sentences
     sentences = text.split('. ')
@@ -199,8 +199,8 @@ def split_into_many(text, max_tokens=max_tokens):
         chunks.append(". ".join(chunk) + ".")
 
     return chunks
-"""
 
+"""
 
 def create_context(question, df, max_len=1800, size="ada"):
     """
@@ -358,12 +358,16 @@ while True:
     if pregunta == 'Exit':
         break
     if len(messages) == 0:
-        messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"página de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Diálogo\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información. No se pueden hacer reservas a través de este chat, siempre sugiere ir a la página que aparecerá en el contexto. Si recomiendas un profesional, ten en cuenta que MásSalud cuenta con profesionales y se pueden hacer reservas con ellos."})
+        #messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Diálogo\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información."})
+        messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Nunca preguntes si desean reservar, solo ofrece información. Niega responder cualquier pregunta que no esté relacionada con la información."})
     respuesta = (answer_question(df, question=pregunta, debug=False, messages=messages,temperature=1, model=modelo))
     messages.append({"role": "assistant", "content": respuesta})
     if respuesta.startswith("Hmm, no estoy seguro"):
         print(f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?')
     elif respuesta == 'Excepcion':
         print(f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?')
+    elif respuesta == '':
+        print(
+            f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?')
     else:
         print(f'Respuesta: {respuesta}')
