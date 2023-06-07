@@ -4,8 +4,13 @@ import openai
 from openai.embeddings_utils import distances_from_embeddings
 from flask import Flask
 from flask import request
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 
 app = Flask(__name__)
+logger = app.logger
 openai.api_key = os.getenv("OPENAI_API_KEY")
 nombre = 'massalud'
 # full_url = "https://www.massalud.com.uy/"
@@ -42,16 +47,16 @@ def create_context(question, df, max_len=1800, size="ada"):
 
 
 def answer_question(df,
-    model="text-davinci-003",
+    model="gpt-3.5-turbo-0301",
     question="Hola, cómo estas?",
-    max_len=1800,
+    max_len=3000,
     size="ada",
     debug=False,
     messages = [],
     preguntas = [],
     max_tokens=190,
     stop_sequence=None,
-    temperature=0
+    temperature=1
 ):
     """
     Answer a question based on the most similar context from the dataframe texts
@@ -68,8 +73,8 @@ def answer_question(df,
         print("\n\n")
 
     try:
-        print(f'Preguntas y respuestas recibidas: {preguntas}')
-        prompt = f"\n\nContexto: {context}\n\n---\n\nDiálogo: {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        logger.debug(f'Preguntas y respuestas recibidas: {preguntas}')
+        prompt = f"Eres un asistente virtual de una farmacia llamada Más Salud, que ofrece servicios de salud y bienestar. Nunca rompas el personaje. Me proporcionarás respuestas basadas en la información dada. Si la respuesta no está incluida, di exactamente \"Hmm, no estoy seguro\" y detente. Al contexto debes llamarlo \"sitio de Más Salud\". Debes continuar el diálogo, revisa los mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información.  \n\nContext: {context}\n\n---\n\nDialogue: {preguntas}\n\n---\n\nQuestion: {question}\nAnswer:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
             temperature=temperature,
@@ -89,22 +94,22 @@ def answer_question(df,
 
 @app.route('/envioPregunta', methods=['POST'])
 def envioPregunta():
-    conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información."}]
-    preguntas = []
+    # conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información."}]
+    conversation = []
     datosIn = request.get_json()
-    preguntasrespuestas = datosIn.get("conversación")
+    preguntasrespuestas = datosIn.get("conversacion")
     pregunta = datosIn.get("pregunta")
     if pregunta.lower() in ["sí", "sí.", "si", "si."]:
         pregunta = pregunta + ', por favor.'
     respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
-        return f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?'
+        return { 'mensaje':f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?' }
     elif respuesta == 'Excepcion':
-        return f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?'
+        return { 'mensaje':f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?' }
     elif respuesta == '':
-        return f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?'
+        return { 'mensaje':f'Ups... parece que hemos tenido un problema y nuestro Asistente virtual se ha ido a descansar. ¿Podrías volver a intentarlo?' }
     else:
-        return respuesta
+        return { 'mensaje': respuesta }
 
 
 pkl = f'processed/df{nombre}.pkl'

@@ -233,15 +233,15 @@ def create_context(question, df, max_len=1800, size="ada"):
     return "\n\n###\n\n".join(returns)
 
 def answer_question(df,
-    model="text-davinci-003",
+    model="gpt-3.5-turbo-0301",
     question="Am I allowed to publish model outputs to Twitter, without a human review?",
-    max_len=1800,
+    max_len=3000,
     size="ada",
     debug=False,
     max_tokens=190,
     messages=[],
     stop_sequence=None,
-    temperature=0
+    temperature=1
 ):
     """
     Answer a question based on the most similar context from the dataframe texts
@@ -259,8 +259,9 @@ def answer_question(df,
 
     try:
         preguntas = messages[:]
-        del preguntas[0]
-        prompt = f"\n\nContexto: {context}\n\n---\n\nDiálogo: {preguntas}\n\n---\n\nPregunta: {question}\nRespuesta:"
+        if len(preguntas) > 0:
+            del preguntas[0]
+        prompt = f"Eres un asistente virtual de una farmacia llamada Más Salud, que ofrece servicios de salud y bienestar. Nunca rompas el personaje. Me proporcionarás respuestas basadas en la información dada. Si la respuesta no está incluida, di exactamente \"Hmm, no estoy seguro\" y detente. Al contexto debes llamarlo \"sitio de Más Salud\". Debes continuar el diálogo, revisa los mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información.  \n\nContext: {context}\n\n---\n\nDialogue: {preguntas}\n\n---\n\nQuestion: {question}\nAnswer:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
             temperature=temperature,
@@ -359,10 +360,8 @@ while True:
         break
     if pregunta.lower() in ["sí", "sí.", "si", "si."]:
         pregunta = pregunta + ', por favor.'
-    print(pregunta)
-    if len(messages) == 0:
-        #messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Antes de analizar el contexto, debes revisar las preguntas anteriores de la conversación que te pasaré en cada pregunta como \"Diálogo\" para poder entender la conversación, es importante que lo hagas. Niega responder cualquier pregunta que no esté relacionada con la información."})
-        messages.append({"role": "system", "content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información."})
+    # if len(messages) == 0:
+    #     messages.append({"role": "system", "content": "I want you to act as a document with which I'm having a conversation. Your name is \"AI Assistant\". You will provide answers based on the given information. If the answer is not included, say exactly \"Hmm, I'm not sure\" and stop after that. Refuse to answer any question that is not related to the information. Never break character."})
     respuesta = (answer_question(df, question=pregunta, debug=False, messages=messages,temperature=1, model=modelo))
     messages.append({"role": "assistant", "content": respuesta})
     if respuesta.startswith("Hmm, no estoy seguro"):
