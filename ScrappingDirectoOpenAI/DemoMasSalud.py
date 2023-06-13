@@ -101,7 +101,7 @@ def envioPregunta():
     pregunta = datosIn.get("pregunta")
     if pregunta.lower() in ["sí", "sí.", "si", "si."]:
         pregunta = pregunta + ', por favor.'
-    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=1, model=modelo))
+    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=0, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         return { 'mensaje':f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?' }
     elif respuesta == 'Excepcion':
