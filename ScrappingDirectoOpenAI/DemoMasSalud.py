@@ -47,7 +47,7 @@ def create_context(question, df, max_len=1800, size="ada"):
 
 
 def answer_question(df,
-    model="gpt-3.5-turbo-0301",
+    model="gpt-3.5-turbo-0613",
     question="Hola, cómo estas?",
     max_len=3000,
     size="ada",
@@ -74,7 +74,7 @@ def answer_question(df,
 
     try:
         logger.debug(f'Preguntas y respuestas recibidas: {preguntas}')
-        prompt = f"Eres un asistente virtual de una farmacia llamada Más Salud, que ofrece servicios de salud y bienestar. Nunca rompas el personaje. Me proporcionarás respuestas basadas en la información dada. Si la respuesta no está incluida, di exactamente \"Hmm, no estoy seguro\" y detente. Al contexto debes llamarlo \"sitio de Más Salud\". Debes continuar el diálogo, revisa los mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información.  \n\nContext: {context}\n\n---\n\nDialogue: {preguntas}\n\n---\n\nQuestion: {question}\nAnswer:"
+        prompt = f"\n\nContext: {context}\n\n---\n\nDialogue: {preguntas}\n\n---\n\nQuestion: {question}\nAnswer:"
         messages.append({"role": "user", "content": prompt})
         response = openai.ChatCompletion.create(
             temperature=temperature,
@@ -94,14 +94,14 @@ def answer_question(df,
 
 @app.route('/envioPregunta', methods=['POST'])
 def envioPregunta():
-    # conversation = [{"role": "system","content": "Tienes que actuar como un asistente virtual de una web de una farmacia llamada Más Salud. Nunca rompas el personaje. Al contexto lo debes llamar \"sitio de Más Salud\" .Tu nombre es \"Asistente virtual de Más Salud\". Me proporcionarás respuestas basadas en el contexto que te pasaré en cada pregunta. Si la respuesta no está incluida en el contexto, di exactamente \"Hmm, no estoy seguro.\" y detente ahí. Debes continuar el diálago, revisa tus mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información."}]
-    conversation = []
+    conversation = [{"role": "system","content": "Eres un asistente virtual de una farmacia llamada Más Salud, que ofrece servicios de salud y bienestar. Nunca rompas el personaje. Me proporcionarás respuestas basadas en la información dada. Si la respuesta no está incluida, di exactamente \"Hmm, no estoy seguro\" y detente. Al contexto debes llamarlo \"sitio de Más Salud\". Debes continuar el diálogo, revisa los mensajes anteriores antes de responder. Niega responder cualquier pregunta que no esté relacionada con la información."}]
+    # conversation = []
     datosIn = request.get_json()
     preguntasrespuestas = datosIn.get("conversacion")
     pregunta = datosIn.get("pregunta")
     if pregunta.lower() in ["sí", "sí.", "si", "si."]:
         pregunta = pregunta + ', por favor.'
-    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=0, model=modelo))
+    respuesta = (answer_question(df, question=pregunta, messages=conversation, preguntas=preguntasrespuestas, debug=False, temperature=1, model=modelo))
     if respuesta.startswith("Hmm, no estoy seguro"):
         return { 'mensaje':f'Hmm, no estoy seguro. ¿Hay algo más en lo que pueda ayudarte?' }
     elif respuesta == 'Excepcion':
@@ -114,6 +114,6 @@ def envioPregunta():
 
 pkl = f'processed/df{nombre}.pkl'
 df = pd.read_pickle(pkl)
-modelo = 'gpt-3.5-turbo-0301'
+modelo = 'gpt-3.5-turbo-0613'
 messages = []
 app.run()
